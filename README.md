@@ -27,7 +27,7 @@ This is a Python script that generates a header image for Meetup events. It take
 
    This command runs the Docker container and mounts the `output` directory in the current directory to the `/output` directory in the container. It passes in the required parameters for the script using command-line arguments.
 
-   You can add multiple `-e`` parameters for all the environment variables listed in the table above.
+   You can add multiple `-e` parameters for all the environment variables listed in the table above.
 
 3. Check the output directory for the generated image file:
 
@@ -49,7 +49,7 @@ This is a Python script that generates a header image for Meetup events. It take
 
    This command runs the Podman container and mounts the `output` directory in the current directory to the `/output` directory in the container. It passes in the required parameters for the script using command-line arguments.
 
-   You can add multiple `-e`` parameters for all the environment variables listed in the table above.
+   You can add multiple `-e` parameters for all the environment variables listed in the table above.
 
 3. Check the output directory for the generated image file:
 
