@@ -6,12 +6,14 @@ This is a Python script that generates a header image for Meetup events. It take
 
 ### Available Environment Variables
 
-TITLE: Meetup title
-DATE: Meetup date
-LOCATION: Meetup location
-PHOTO: Path to background photo (file path or URL)
-LOGO: Path to sponsor logo (file path or URL)
-OUTPUT_DIR: Specify the directory where the result should be stored
+| Variable Name | Description                                           | Valid inputs     | Default            |
+| --- | --- | --- | --- |
+| TITLE         | Meetup title                                          | Text             | MY MEETUP TITLE    |
+| DATE          | Meetup date                                           | Text             | 1 January 1970     |
+| LOCATION      | Meetup location                                       | Text             | Vienna, Austria    |
+| PHOTO         | Background photo                                      | File path or URL | URL to stock image |
+| LOGO          | Sponsor logo                                          | File path or URL | URL to AWS logo    |
+| OUTPUT_DIR    | Directory where result is stored within the container | Text             | /output            |
 
 ### Using Docker
 
@@ -25,7 +27,9 @@ OUTPUT_DIR: Specify the directory where the result should be stored
 
    This command runs the Docker container and mounts the `output` directory in the current directory to the `/output` directory in the container. It passes in the required parameters for the script using command-line arguments.
 
-6. Check the output directory for the generated image file:
+   You can add multiple `-e`` parameters for all the environment variables listed in the table above.
+
+3. Check the output directory for the generated image file:
 
    ```
    ls output/
@@ -37,35 +41,17 @@ OUTPUT_DIR: Specify the directory where the result should be stored
 
 1. Install Podman on your system. You can download Podman from the official website: https://podman.io/getting-started/installation
 
-2. Clone this repository to your local machine:
+2. Run the Podman container:
 
    ```
-   git clone https://github.com/username/meetup-header-generator.git
+   podman run --rm -v $(pwd)/output:/output -e TITLE="My AWS Meetup" ghcr.io/aws-community-toolkit/image-generator/image-generator:latest
    ```
 
-3. Navigate to the cloned repository:
+   This command runs the Podman container and mounts the `output` directory in the current directory to the `/output` directory in the container. It passes in the required parameters for the script using command-line arguments.
 
-   ```
-   cd meetup-header-generator
-   ```
+   You can add multiple `-e`` parameters for all the environment variables listed in the table above.
 
-4. Build the Podman image:
-
-   ```
-   podman build -t meetup-header-generator .
-   ```
-
-5. Run the Podman container:
-
-   ```
-   podman run --rm -v $(pwd)/output:/app/output meetup-header-generator --name "My Meetup" --date "2022-01-01" --location "San Francisco, CA" --logo "https://example.com/logo.png"
-   ```
-
-   This command runs the Podman container and mounts the `output` directory in the current directory to the `/app/output` directory in the container. It passes in the required parameters for the script using command-line arguments.
-
-   You can replace the values for `--name`, `--date`, `--location`, and `--logo` with your own values.
-
-6. Check the output directory for the generated image file:
+3. Check the output directory for the generated image file:
 
    ```
    ls output/
