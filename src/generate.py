@@ -10,6 +10,7 @@ TITLE = os.getenv("TITLE", "MY MEETUP TITLE")
 DATE = os.getenv("DATE", "1 January 1970")
 LOCATION = os.getenv("LOCATION", "Vienna, Austria")
 PHOTO = os.getenv("PHOTO", "https://content-files.shure.com/BlogPosts/basic-conference-room-design-a-webinar/images/basic-conference-room-design-a-webinar_header.png")
+PHOTO_OPACITY = int(os.getenv("PHOTO_OPACITY", 30))
 LOGO = os.getenv("LOGO", "https://lavca.org/app/uploads/2019/10/aws-logo-square.png")
 OUTPUT_DIR = os.getenv("OUTPUT_DIR", "/output")
 
@@ -44,7 +45,7 @@ photo_image = photo_image.crop((left, top, right, bottom))
 photo_image = photo_image.convert("RGBA")
 
 # Set the alpha channel of the gray image to 30%
-photo_image.putalpha(77)
+photo_image.putalpha(round(254 * (1 - PHOTO_OPACITY / 100)))
 
 # Paste the combined image onto the base image
 base_image.paste(photo_image, (base_image.width - photo_image.width, 0), photo_image)

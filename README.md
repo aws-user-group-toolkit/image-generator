@@ -12,6 +12,7 @@ This is a Python script that generates a header image for Meetup events. It take
 | DATE          | Meetup date                                           | Text             | 1 January 1970     |
 | LOCATION      | Meetup location                                       | Text             | Vienna, Austria    |
 | PHOTO         | Background photo                                      | File path or URL | URL to stock image |
+| PHOTO_OPACITY | Background photo opacity (between 0% and 100%)        | 0-100 | 30 |
 | LOGO          | Sponsor logo                                          | File path or URL | URL to AWS logo    |
 | OUTPUT_DIR    | Directory where result is stored within the container | Text             | /output            |
 
