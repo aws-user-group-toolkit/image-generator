@@ -1,14 +1,17 @@
 import textwrap
 import urllib.request
 import io
+import os
+import time
 
 from PIL import Image, ImageDraw, ImageFont
 
-TITLE = "Enterprise Networking in AWS & Amazon Bedrock"
-DATE = "December 7th 2023"
-LOCATION = "Vienna, Austria"
-FOTO = "https://content-files.shure.com/BlogPosts/basic-conference-room-design-a-webinar/images/basic-conference-room-design-a-webinar_header.png"
-LOGO = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/ORF_logo.svg/2560px-ORF_logo.svg.png"
+TITLE = os.getenv("TITLE", "MY MEETUP TITLE")
+DATE = os.getenv("DATE", "1 January 1970")
+LOCATION = os.getenv("LOCATION", "Vienna, Austria")
+FOTO = os.getenv("FOTO", "https://content-files.shure.com/BlogPosts/basic-conference-room-design-a-webinar/images/basic-conference-room-design-a-webinar_header.png")
+LOGO = os.getenv("LOGO", "https://www.hubpng.com/files/preview/1280x765/png-transparent-amazon-logo-png-white-aws-logo-transparent-background-11679435173hgekgpiraebp1kcyyvtzwaozcfg7yhqxzr4plrxd4i0raq7lxwmusrvv978vom4pt6gyca7y1hma8tayjrsqe.png")
+OUTPUT_DIR = os.getenv("OUTPUT_DIR", "/output")
 
 # Open the base image
 base_image = Image.open("assets/images/meetup-header.png").convert("RGBA")
@@ -101,4 +104,5 @@ logo_image = logo_image.resize((logo_width, logo_height))
 base_image.paste(logo_image, (630, base_image.height - logo_image.height - 100), logo_image)
 
 # Save the final image
-base_image.save("test.png")
+ts = time.time()
+base_image.save("{OUTPUT_DIR}/meetup-header-{ts}.png")
