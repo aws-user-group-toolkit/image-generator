@@ -105,4 +105,4 @@ base_image.paste(logo_image, (630, base_image.height - logo_image.height - 100),
 
 # Save the final image
 ts = time.time()
-base_image.save("{OUTPUT_DIR}/meetup-header-{ts}.png")
+base_image.save(f"{OUTPUT_DIR}/meetup-header-{ts}.png")
