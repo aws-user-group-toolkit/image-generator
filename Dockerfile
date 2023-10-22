@@ -14,11 +14,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code into the container
 COPY ./src/ .
 
-# Set the environment variables
-ENV TITLE="Default Title" \
-    DATE="Default Date" \
-    LOCATION="Default Location" \
-    FOTO="https://example.com/default.jpg"
-
 # Run the command to start the application
 CMD [ "python", "generate.py" ]
