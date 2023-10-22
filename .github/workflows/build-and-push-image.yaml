@@ -13,6 +13,9 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
+      - name: Enable Docker BuildKit
+        run: docker buildx create --use --name mybuilder
+
       - name: Checkout code
         uses: actions/checkout@v2
 

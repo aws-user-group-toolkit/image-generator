@@ -1,5 +1,6 @@
-# Use an official Python runtime as a parent image
-FROM python:3.9-slim-buster
+# syntax=docker/dockerfile:1.2
+# Use a multi-architecture base image
+FROM --platform=$BUILDPLATFORM python:3.9-slim-buster AS base
 
 # Set the working directory to /app
 WORKDIR /app
