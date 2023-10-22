@@ -3,6 +3,7 @@ import urllib.request
 import io
 import os
 import time
+import math
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -58,16 +59,19 @@ base_image.paste(overlay_image, (0, 0), overlay_image)
 text_image = Image.new("RGBA", base_image.size, (255, 255, 255, 0))
 
 # Draw the title text onto the text image
-title_font = ImageFont.truetype("assets/fonts/Ember/AmazonEmber_He.ttf", 130)
+title_font = ImageFont.truetype("assets/fonts/Ember/AmazonEmber_He.ttf", 150)
 title_text_size = title_font.getlength(TITLE)
-max_title_width = base_image.width // 3
+max_title_width = base_image.width // 2.5
+line_count = 1
 if title_text_size > max_title_width:
     lines = textwrap.wrap(TITLE, width=20, break_long_words=False)
+    line_count = len(lines)
     title_text = "\n".join(lines)
     title_text_size = max(title_font.getlength(line) for line in lines)
 else:
     title_text = TITLE
-title_text_position = (base_image.width // 4 - title_text_size // 2, 1150)
+
+title_text_position = (base_image.width // 4 - title_text_size // 2, math.floor((base_image.height // 2) - (160 * (line_count / 2))))
 title_draw = ImageDraw.Draw(text_image)
 title_draw.text(title_text_position, title_text, fill="white", font=title_font, align="center")
 
