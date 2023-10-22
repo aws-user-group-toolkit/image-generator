@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw, ImageFont
 TITLE = os.getenv("TITLE", "MY MEETUP TITLE")
 DATE = os.getenv("DATE", "1 January 1970")
 LOCATION = os.getenv("LOCATION", "Vienna, Austria")
-FOTO = os.getenv("FOTO", "https://content-files.shure.com/BlogPosts/basic-conference-room-design-a-webinar/images/basic-conference-room-design-a-webinar_header.png")
+PHOTO = os.getenv("PHOTO", "https://content-files.shure.com/BlogPosts/basic-conference-room-design-a-webinar/images/basic-conference-room-design-a-webinar_header.png")
 LOGO = os.getenv("LOGO", "https://www.hubpng.com/files/preview/1280x765/png-transparent-amazon-logo-png-white-aws-logo-transparent-background-11679435173hgekgpiraebp1kcyyvtzwaozcfg7yhqxzr4plrxd4i0raq7lxwmusrvv978vom4pt6gyca7y1hma8tayjrsqe.png")
 OUTPUT_DIR = os.getenv("OUTPUT_DIR", "/output")
 
@@ -17,13 +17,13 @@ OUTPUT_DIR = os.getenv("OUTPUT_DIR", "/output")
 base_image = Image.open("assets/images/meetup-header.png").convert("RGBA")
 
 # Open the photo image and resize it
-if FOTO.startswith("http"):
-    req = urllib.request.Request(FOTO, headers={'User-Agent': 'Mozilla/5.0'})
+if PHOTO.startswith("http"):
+    req = urllib.request.Request(PHOTO, headers={'User-Agent': 'Mozilla/5.0'})
     with urllib.request.urlopen(req) as url:
         f = io.BytesIO(url.read())
         photo_image = Image.open(f).convert("L")
 else:
-    photo_image = Image.open(FOTO).convert("L")
+    photo_image = Image.open(PHOTO).convert("L")
 
 width, height = photo_image.size
 aspect_ratio = width / height
