@@ -37,6 +37,14 @@ This is a Python script that generates a header image for Meetup events. It take
 
    You should see a PNG image file with a name similar to `meetup-header-1640996407.123456.png`.
 
+#### Examples
+
+Use locally stored images
+
+```
+docker run --rm -v $(pwd)/output:/output -v $(pwd)/input:/input -e PHOTO="/input/my-local-header.jpg" -e TITLE="My AWS Meetup" ghcr.io/aws-community-toolkit/image-generator/image-generator:latest
+```
+
 ### Using Podman
 
 1. Install Podman on your system. You can download Podman from the official website: https://podman.io/getting-started/installation
@@ -60,3 +68,11 @@ This is a Python script that generates a header image for Meetup events. It take
    You should see a PNG image file with a name similar to `meetup-header-1640996407.123456.png`.
 
 That's it! You should now be able to use this script to generate Meetup header images using Docker or Podman.
+
+#### Examples
+
+Use locally stored images
+
+```
+podman run --rm -v $(pwd)/output:/output -v $(pwd)/input:/input -e PHOTO="/input/my-local-header.jpg" -e TITLE="My AWS Meetup" ghcr.io/aws-community-toolkit/image-generator/image-generator:latest
+```
