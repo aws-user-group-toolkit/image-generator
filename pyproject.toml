@@ -8,7 +8,7 @@ authors = [
   { name = "Philipp Bergsmann", email = "me@ph-bergsmann.com" },
 ]
 dependencies = [
-  "Pillow==10.1.0",
+  "Pillow==10.3.0",
 ]
 
 [project.urls]
