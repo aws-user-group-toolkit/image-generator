@@ -7,7 +7,7 @@ import math
 
 from PIL import Image, ImageDraw, ImageFont
 
-def generate(title = "MY MEETUP title", date = "January 1st, 1970", location = "Vienna, Austria", photo = "https://content-files.shure.com/BlogPosts/basic-conference-room-design-a-webinar/images/basic-conference-room-design-a-webinar_header.png", photo_opacity = 30, logo = "https://lavca.org/app/uploads/2019/10/aws-logo-square.png", output_dir = "./output"):
+def generate(title = "MY MEETUP title", date = "January 1st, 1970", location = "Vienna, Austria", photo = "https://content-files.shure.com/BlogPosts/basic-conference-room-design-a-webinar/images/basic-conference-room-design-a-webinar_header.png", photo_opacity = 30, logo = "https://lavca.org/app/uploads/2019/10/aws-logo-square.png", output_dir = "/output"):
     ressource_path = path.join(path.dirname(__file__), 'ressources')
 
     # Open the base image
