@@ -1,5 +1,5 @@
 [project]
-name = "act-image-generator"
+name = "act_image_generator"
 dynamic = ["version"]
 readme = "README.md"
 requires-python = ">=3.8"
